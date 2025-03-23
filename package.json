@@ -4,6 +4,8 @@
     "pg": "^8.13.3"
   },
   "devDependencies": {
-    "@types/node": "^22.13.4"
+    "@types/dotenv": "^6.1.1",
+    "@types/node": "^22.13.4",
+    "@types/pg": "^8.11.11"
   }
 }
