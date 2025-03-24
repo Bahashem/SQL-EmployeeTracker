@@ -5,6 +5,7 @@
   },
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
+    "@types/inquirer": "^9.0.7",
     "@types/node": "^22.13.4",
     "@types/pg": "^8.11.11"
   }
