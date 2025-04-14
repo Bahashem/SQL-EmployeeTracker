@@ -1,7 +1,10 @@
 import { QueryResult } from 'pg';
-import { pool, connectToDb } from './connection.js';
+import { pool, connectToDb } from './connection';
 
-await connectToDb();
+(async () => {
+	await connectToDb();
+})();
+
 
 
 

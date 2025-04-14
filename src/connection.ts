@@ -23,14 +23,14 @@ const connectToDb = async () => {
 };
 connectToDb();
 
-// View All Departments
-const viewDepartments = async () => {
+// View All department
+const viewdepartment = async () => {
   try {
-    const sql = `SELECT * FROM departments`;
+    const sql = `SELECT * FROM department`;
     const result = await pool.query(sql);
     console.table(result.rows);
   } catch (err) {
-    console.error("Error viewing departments:", err);
+    console.error("Error viewing department:", err);
   }
 };
 
@@ -136,7 +136,7 @@ const viewEmployeesByManager = async (managerId: number) => {
   }
 };
 
-//Delete Departments
+//Delete department
 const deleteDepartment = async (departmentId: number) => {
   try {
     const sql = `DELETE FROM department WHERE id = $1;`;
@@ -176,7 +176,7 @@ inquirer
       type: "list",
       message: "What would you like to do?",
       choices: [
-        "View All Departments",
+        "View All department",
         "View All Roles",
         "View All Employees",
         "Add a Department",
@@ -185,7 +185,7 @@ inquirer
         "Update an Employee Role",
         "Update a Employee Manager",
         "View Employees by Manager",
-        "Delete Departments",
+        "Delete department",
         "Delete Roles",
         "Delete Employee",
         "Exit",
@@ -194,8 +194,8 @@ inquirer
   ])
   .then(({ action }) => {
     switch (action) {
-      case "View All Departments":
-        return viewDepartments();
+      case "View All department":
+        return viewdepartment();
       case "View All Roles":
         return viewRoles();
       case "View All Employees":
@@ -315,7 +315,7 @@ inquirer
           ])
           .then(({ managerId }) => viewEmployeesByManager(managerId));
 
-      //Delete Departments
+      //Delete department
       case "Delete Department":
         return inquirer
           .prompt([
@@ -342,3 +342,7 @@ inquirer
         return process.exit();
     }
   });
+  // export function connectToDb() {
+  //   return pool.connect()
+  //   };
+  export {pool, connectToDb};

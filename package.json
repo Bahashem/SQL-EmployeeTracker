@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "dotenv": "^16.5.0",
     "inquirer": "^12.4.1",
     "pg": "^8.13.3"
   },
@@ -7,6 +8,11 @@
     "@types/dotenv": "^6.1.1",
     "@types/inquirer": "^9.0.7",
     "@types/node": "^22.13.4",
-    "@types/pg": "^8.11.11"
+    "@types/pg": "^8.11.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "scripts": {
+    "start": "ts-node src/index.ts"
   }
 }
