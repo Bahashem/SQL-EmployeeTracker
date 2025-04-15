@@ -37,7 +37,7 @@ const viewdepartment = async () => {
 // View all Roles
 const viewRoles = async () => {
   try {
-    const sql = `SELECT * FROM roles`;
+    const sql = `SELECT * FROM role`;
     const result = await pool.query(sql);
     console.table(result.rows);
   } catch (err) {
@@ -48,7 +48,7 @@ const viewRoles = async () => {
 // View all employees
 const viewEmployees = async () => {
   try {
-    const sql = "SELECT * FROM employees";
+    const sql = "SELECT * FROM employee";
     const result = await pool.query(sql);
     console.table(result.rows);
   } catch (err) {
@@ -147,10 +147,10 @@ const deleteDepartment = async (departmentId: number) => {
   }
 };
 
-//Delete Roles
+//Delete Role
 const deleteRole = async (role_Id: number) => {
   try {
-    const sql = `DELETE FROM roles WHERE id = $1;`;
+    const sql = `DELETE FROM role WHERE id = $1;`;
     const result = await pool.query(sql, [role_Id]);
     console.log("Role deleted:", result.rowCount);
   } catch (err) {
@@ -186,7 +186,7 @@ inquirer
         "Update a Employee Manager",
         "View Employees by Manager",
         "Delete department",
-        "Delete Roles",
+        "Delete Role",
         "Delete Employee",
         "Exit",
       ],
@@ -326,8 +326,22 @@ inquirer
             },
           ])
           .then(({ departmentId }) => deleteDepartment(departmentId));
-      //Delete Employees
-      case "Delete Employees":
+          
+          //Delete Role
+          case "Delete Role":
+            return inquirer
+              .prompt([
+                {
+              name: "roleId",
+              type: "number",
+              message: "Enter the ID of the role to delete:",
+                  
+                },
+              ])
+              .then(({ roleId }) => deleteRole(roleId));
+
+          //Delete Employee
+      case "Delete Employee":
         return inquirer
           .prompt([
             {
