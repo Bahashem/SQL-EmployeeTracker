@@ -149,6 +149,94 @@ const deleteEmployee = async (employeeId: number) => {
     console.error("Error deleting employee:", err);
   }
 };
+//Update Employee Role
+case "Update an Employee Role":
+	return inquirer
+	  .prompt([
+		{
+		  name: "employeeId",
+		  type: "number",
+		  message: "Enter the employee ID:",
+		},
+		{
+		  name: "roleId",
+		  type: "number",
+		  message: "Enter the new role ID:",
+		},
+	  ])
+	  .then(({ employeeId, roleId }) =>
+		updateEmployeeRole(employeeId, roleId)
+	  );
+
+  //Update an employee Manager
+  case "Update an Employee Manager":
+	return inquirer
+	  .prompt([
+		{
+		  name: "employeeId",
+		  type: "number",
+		  message: "Enter the employee ID:",
+		},
+		{
+		  name: "managerId",
+		  type: "number",
+		  message: "Enter the new manager ID:",
+		},
+	  ])
+	  .then(({ employeeId, managerId }) =>
+		updateEmployeeManager(employeeId, managerId)
+	  );
+
+  //View employees by Manager
+  case "View Employees by Manager":
+	return inquirer
+	  .prompt([
+		{
+		  name: "managerId",
+		  type: "number",
+		  message: "Enter the manager ID:",
+		},
+	  ])
+	  .then(({ managerId }) => viewEmployeesByManager(managerId)
+	);
+
+  //Delete department
+  case "Delete Department":
+	return inquirer
+	  .prompt([
+		{
+		  name: "departmentId",
+		  type: "number",
+		  message: "Enter the department ID to delete:",
+		},
+	  ])
+	  .then(({ departmentId }) => deletedepartment(departmentId));
+	  
+	  //Delete Role
+	  case "Delete Role":
+		return inquirer
+		  .prompt([
+			{
+		  name: "roleId",
+		  type: "number",
+		  message: "Enter the ID of the role to delete:",
+			  
+			},
+		  ])
+		  .then(({ roleId }) => deleteRole(roleId));
+
+	  //Delete Employee
+  case "Delete Employee":
+	return inquirer
+	  .prompt([
+		{
+		  name: "employeeId",
+		  type: "number",
+		  message: "Enter the employee ID to delete:",
+		},
+	  ])
+	  .then(({ employeeId }) => deleteEmployee(employeeId));
+
 
 inquirer
   .prompt([
@@ -246,93 +334,7 @@ inquirer
             addEmployee(firstName, lastName, roleId, managerId)
           );
 
-      //Update Employee Role
-      case "Update an Employee Role":
-        return inquirer
-          .prompt([
-            {
-              name: "employeeId",
-              type: "number",
-              message: "Enter the employee ID:",
-            },
-            {
-              name: "roleId",
-              type: "number",
-              message: "Enter the new role ID:",
-            },
-          ])
-          .then(({ employeeId, roleId }) =>
-            updateEmployeeRole(employeeId, roleId)
-          );
-
-      //Update an employee Manager
-      case "Update an Employee Manager":
-        return inquirer
-          .prompt([
-            {
-              name: "employeeId",
-              type: "number",
-              message: "Enter the employee ID:",
-            },
-            {
-              name: "managerId",
-              type: "number",
-              message: "Enter the new manager ID:",
-            },
-          ])
-          .then(({ employeeId, managerId }) =>
-            updateEmployeeManager(employeeId, managerId)
-          );
-
-      //View employees by Manager
-      case "View Employees by Manager":
-        return inquirer
-          .prompt([
-            {
-              name: "managerId",
-              type: "number",
-              message: "Enter the manager ID:",
-            },
-          ])
-          .then(({ managerId }) => viewEmployeesByManager(managerId));
-
-      //Delete department
-      case "Delete Department":
-        return inquirer
-          .prompt([
-            {
-              name: "departmentId",
-              type: "number",
-              message: "Enter the department ID to delete:",
-            },
-          ])
-          .then(({ departmentId }) => deletedepartment(departmentId));
-          
-          //Delete Role
-          case "Delete Role":
-            return inquirer
-              .prompt([
-                {
-              name: "roleId",
-              type: "number",
-              message: "Enter the ID of the role to delete:",
-                  
-                },
-              ])
-              .then(({ roleId }) => deleteRole(roleId));
-
-          //Delete Employee
-      case "Delete Employee":
-        return inquirer
-          .prompt([
-            {
-              name: "employeeId",
-              type: "number",
-              message: "Enter the employee ID to delete:",
-            },
-          ])
-          .then(({ employeeId }) => deleteEmployee(employeeId));
-
+      
       case "Exit":
         return process.exit();
     }
