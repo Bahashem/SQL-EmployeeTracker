@@ -8,13 +8,14 @@ Table of Content
 1.Installation Instructions 2.Usage Information 3.Contribution 4.Tests 5.Questions
 
 Installation Instructions
-Run the project usine psql -U postgress and npm start
+Run the project using psql -U postgress and npm start
 
 Usage Information
-Run the project in PostgresSQL and Node.js
+Run the project in PostgresSQL and Node.js by entering npm start in the terminal. 
+View video: https://app.screencastify.com/v3/watch/2TR4n6Vf93XZZuZpl3uy
 
 Contribution
-Not at this time.
+Not at this time.Assistance was also given for this code by the Bootcamp TAs, the instructor Dan, Copilot, and Chat GTP as needed.
 
 License
 This project is licensed under the MIT License.
